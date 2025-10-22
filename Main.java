@@ -89,5 +89,9 @@ public class Main {
             System.out.printf("%-15s | Blind: %.2f (%s) | Aware: %.2f (%s)%n",
                     app.name, blind, blindDecision, aware, awareDecision);
         }
+        System.out.println("==========================");
+        System.out.printf("Accepted: %.2f%% (Blind), %.2f%% (Aware)%n",
+                applicants.stream().filter(a -> Admissions.blindScore(a) >= cutoff).count() * 100.0 / applicants.size(),
+                applicants.stream().filter(a -> Admissions.awareScore(a) >= cutoff).count() * 100.0 / applicants.size());
     }
 }
